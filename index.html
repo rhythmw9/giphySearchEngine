@@ -45,17 +45,29 @@
         <h2 class="fs-4 mt-3">Type anything to discover GIFs!</h2>
 
         <!-- Search bar -->
+        <form class="d-flex justify-content-center mt-5" id="search-bar">
+            <input type="text" class="form-control w-50 rounded-pill px-4" id="search-input" placeholder="Type a vibe... like 'happy cat'"> <!-- Make the placeholder rotate thru different texts-->
+            <button class="btn btn-primary ms-3 px-4 rounded-pill">Go!</button>
+        </form>
 
     </header>
 
-    <!-- Main -->
-    <main>
-
+    <!-- Main -->  <!-- FOR NOW THIS IS JUST A TEMPERARRY GIF PLACEHOLDER, NO CUSTOM CSS GRID YET -->
+    <main class="bg-light py-5">
+        <div class="container">
+            <div id="gif-results"></div>
+        </div>
     </main>
+
+
+    <hr class="border-secondary mb-3"> <!-- This just adds a seperation line... MAYBE DELETE LATER -->
 
     <!-- Footer -->
     <footer>
-
+        <div class="container">
+            <p class="mb-0">Built by Rhythm Winicour-Freeman</p>
+            <small class="text-secondary">Powered by Giphy API</small>
+        </div>
     </footer>
 
     <!-- Bootstap JS -->
