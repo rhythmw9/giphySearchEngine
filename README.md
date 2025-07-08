@@ -4,6 +4,11 @@ A dynamic, responsive search engine for GIFs using the Giphy API. Users can ente
 
 ---
 
+**Live Site:**  
+[https://rhythmw9.github.io/giphySearchEngine/](https://rhythmw9.github.io/giphySearchEngine/)
+
+---
+
 ## Overview
 
 This project is a front-end web app that allows users to:
