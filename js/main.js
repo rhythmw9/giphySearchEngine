@@ -1,10 +1,14 @@
+// DOM references
+const searchInput = document.getElementById("search-input");
+const errorMsg = document.getElementById("error-message");
+const gifContainer = document.getElementById("gif-results");
+
+const searchBtn = document.getElementById("btn");
+searchBtn.addEventListener("click", handleSearchClick);
+
+
 // giphy API key
 const APIkey = "AjRvmqBn8zjHhocxAyOP672lGgqMiWHU";
-
-// more globals
-
-
-
 
 // Placeholder strings for search bar
 const placeholders = [
@@ -26,8 +30,7 @@ function setRandomPlaceholder(){
         newIndex = Math.floor(Math.random() * placeholders.length); // calculate a random index within the length of the placeholders array
     } while (placeholders.length > 1 && newIndex == lastIndex); // keep selecting a new index until it's different than the last
 
-    const input = document.getElementById("search-input"); // grab the search bar input 
-    input.placeholder = placeholders[newIndex]; // set the selected placeholder string to the default search bar value
+    searchInput.placeholder = placeholders[newIndex]; // set the selected placeholder string to the default search bar value
 
     localStorage.setItem("lastPlaceholderIndex", newIndex); // store new index in local storage to be checked next time the page loads
 }
@@ -38,9 +41,8 @@ window.addEventListener("DOMContentLoaded", setRandomPlaceholder); // run the fu
 // Main async function
 async function handleSearchClick(event){
     event.preventDefault();
-    const searchBarInput = document.getElementById("search-input").value;
-    const userInput = searchBarInput.trim(); // remove any whitespace
-    const errorMsg = document.getElementById("error-message");
+    const searchInputValue = searchInput.value;
+    const userInput = searchInputValue.trim(); // remove any whitespace
 
     if(userInput === ""){
         errorMsg.textContent = "Please enter a search term.";
@@ -51,6 +53,8 @@ async function handleSearchClick(event){
     }
 
     clearResults();
+
+    gifContainer.innerHTML = "<p class='text-center'>Loading...</p>";
 
     // call fetch gifs function and pass result into displayGifs function
     const gifArray = await fetchGifs(userInput);
@@ -64,7 +68,7 @@ async function handleSearchClick(event){
 // Function to fetch data from API
 async function fetchGifs(query){
     const encodedQuery = encodeURIComponent(query);
-    const url = `https://api.giphy.com/v1/gifs/search?api_key=${APIkey}&q=${query}&limit=10&rating=g&lang=en`;
+    const url = `https://api.giphy.com/v1/gifs/search?api_key=${APIkey}&q=${encodedQuery}&limit=20&rating=g&lang=en`;
 
     const response = await fetch(url); // fetch data from giphy api using the key and the query
     const json = await response.json(); // convert into json 
@@ -73,40 +77,30 @@ async function fetchGifs(query){
 
 // function to display gifs on the webpage
 function displayGifs(gifArray){
-    const gifContainer = document.getElementById("gif-results");
+    gifContainer.innerHTML = "";
+
+    if(gifArray.length === 0){
+        gifContainer.innerHTML = "<p class='text-center text-muted'>No GIFs found. Try a different search!</p>";
+        return;
+    }
 
     for(let gif of gifArray){
-        const col = document.createElement("div");
-        col.className = "col-6 col-md-4 col-lg-3";
 
         const img = document.createElement("img");
         img.src = gif.images.fixed_height.url;
         img.alt = gif.title;
         img.className = "img-fluid rounded shadow";
 
-        col.appendChild(img);
-        gifContainer.appendChild(col);
+        gifContainer.appendChild(img);
     }
 }
 
 // Function to clear the previous gifs from the webpage
 function clearResults(){
-    const gifContainer = document.getElementById("gif-results");
     gifContainer.innerHTML = "";
 }
 
-
-
-
-
-
-// after all function logic, add an event handler to the button to run the main function 
-document.getElementById("btn").addEventListener("click", handleSearchClick);
-
-
 // error message logic
-const searchInput = document.getElementById("search-input");
 searchInput.addEventListener("focus", () => {
-    const errorMsg = document.getElementById("error-message");
     errorMsg.style.display = "none";
 })
