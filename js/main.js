@@ -52,16 +52,14 @@ async function handleSearchClick(event){
         errorMsg.style.display = "none";
     }
 
-    clearResults();
+    clearResults(); // clear previous results
 
     gifContainer.innerHTML = "<p class='text-center'>Loading...</p>";
 
     // call fetch gifs function and pass result into displayGifs function
     const gifArray = await fetchGifs(userInput);
 
-
-    // call displayGifs function
-    displayGifs(gifArray);
+    displayGifs(gifArray); // display the gifs
 
 }
 

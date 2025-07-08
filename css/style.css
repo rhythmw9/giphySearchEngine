@@ -1,24 +1,30 @@
+/* Nav link hover effect */
 nav a:hover {
     text-decoration: underline;
 }
 
+/* GIF results section layout */
 #gif-results {
     min-height: 400px;
 }
 
+/* Footer layout and spacing */
 footer {
   width: 100%;
   text-align: center;
   position: relative;
   padding-top: 20px;
+  padding-bottom: 20px;
   margin-top: auto;
 }
 
+/* Error message style */
 #error-message {
   color: red;
   margin-left: 10px;
 }
 
+/* Custom flex grid for GIFs */
 .gif-grid {
   display: flex;
   flex-wrap: wrap;
@@ -26,12 +32,14 @@ footer {
   justify-content: center;
 }
 
+/* GIF image styling */
 .gif-grid img {
   width: 100%;
   max-width: 250px;
   border-radius: 8px;
 }
 
+/* Mobile view: stack layout at 320px */
 @media (max-width: 320px) {
   nav .container,
   header .container {
@@ -43,6 +51,12 @@ footer {
     flex-direction: column;
     align-items: center;
   }
+}
+
+/* Remove gray outline on hamburger button */
+.navbar-toggler:focus {
+  box-shadow: none;
+  outline: none;
 }
 
 

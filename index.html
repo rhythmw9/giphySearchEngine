@@ -1,80 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giphy Search Engine</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GIF Generator</title>
     <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" 
-     rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous"/>
     <!-- Google fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"/>
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
     <!-- Navbar -->
-    <nav class="navbar sticky-top navbar-expand-lg bg-dark navbar-dark">
+    <nav class="navbar sticky-top navbar-expand-md bg-dark navbar-dark">
+      <div class="container">
+        <!-- Logo / Site Name -->
+        <a class="navbar-brand" href="#">GIF Generator</a>
 
-        <div class="container">
+        <!-- Hamburger Toggler -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarLinks">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <!-- logo/site name -->
-            <div class="navbar-brand">Logo/Site Name</div>
-
-
-            <!-- Fake links -->
-            <div class="ms-auto d-flex gap-2">
-                <a href="#" class="navbar-brand">Home</a>
-                <span class="navbar-brand">|</span>
-                <a href="#" class="navbar-brand">Trending</a>
-                <span class="navbar-brand">|</span>
-                <a href="#" class="navbar-brand">Categories</a>
-            </div>
-
+        <!-- Collapsible Nav Links -->
+        <div class="collapse navbar-collapse" id="navbarLinks">
+          <ul class="navbar-nav ms-auto text-center">
+            <li class="nav-item">
+              <a href="#" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">Trending</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">Categories</a>
+            </li>
+          </ul>
         </div>
-
+      </div>
     </nav>
 
     <!-- Header -->
     <header class="text-center py-5 bg-dark text-light">
-        
-        <h1 class="fw-bold display-4">Search. Laugh. Repeat.</h1>
-        <h2 class="fs-4 mt-3">Type anything to discover GIFs!</h2>
+      <h1 class="fw-bold display-4">Search. Laugh. Repeat.</h1>
+      <h2 class="fs-4 mt-3">Type anything to discover GIFs!</h2>
 
-        <!-- Search bar -->
-        <form class="d-flex justify-content-center mt-5" id="search-bar">
-            <input type="text" class="form-control w-50 rounded-pill px-4" id="search-input" placeholder="">
-            <p id="error-message" class="text-danger mt-2" style="display: none;"></p>
-            <button id="btn" class="btn btn-primary ms-3 px-4 rounded-pill">Go!</button>
-        </form>
-
+      <!-- Search bar -->
+      <form class="d-flex justify-content-center mt-5" id="search-bar">
+        <input
+          type="text"
+          class="form-control w-50 rounded-pill px-4"
+          id="search-input"
+          placeholder="Search for something..."/>
+        <p
+          id="error-message"
+          class="text-danger mt-2"
+          style="display: none"></p>
+        <button id="btn" class="btn btn-primary ms-3 px-4 rounded-pill">Go!</button>
+      </form>
     </header>
 
-    <!-- Main -->  <!-- FOR NOW THIS IS JUST A TEMPERARRY GIF PLACEHOLDER, NO CUSTOM CSS GRID YET -->
+    <!-- Main -->
     <main class="bg-light py-5">
-        <div class="container">
-            <div id="gif-results" class="gif-grid"></div>
-        </div>
+      <div class="container">
+        <div id="gif-results" class="gif-grid"></div>
+      </div>
     </main>
 
-
-    <hr class="border-secondary mb-3"> <!-- This just adds a seperation line... MAYBE DELETE LATER -->
+    <hr class="border-secondary mb-3" /> <!-- Seperation Line -->
 
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <p class="mb-0">Built by Rhythm Winicour-Freeman</p>
-            <small class="text-secondary">Powered by Giphy API</small>
-        </div>
+      <div class="container">
+        <p class="mb-0">Built by Rhythm Winicour-Freeman</p>
+        <small class="text-secondary">Powered by Giphy API</small>
+      </div>
     </footer>
 
     <!-- Bootstap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" 
-     integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+      crossorigin="anonymous"></script>
     <!-- Custom JS -->
     <script src="js/main.js"></script>
-</body>
+  </body>
 </html>
